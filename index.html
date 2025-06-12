@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio to Waveform Video Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Audio to Waveform Video Generator</h1>
+    <p>Select an audio file to generate a waveform video (MP4).</p>
+    <p class="warning">
+        <strong>Note:</strong> All processing is done in your browser. This can be slow and use a lot of memory for long audio files.
+    </p>
+
+    <div class="controls">
+        <label for="audioFile">Choose an audio file:</label>
+        <input type="file" id="audioFileInput" accept="audio/*">
+        <button id="generateButton" disabled>Generate Video</button>
+    </div>
+
+    <div id="status">Waiting for file...</div>
+    <progress id="progressBar" value="0" max="100" style="width: 100%; display: none;"></progress>
+    
+    <a id="downloadLink" style="display:none;">Download Video</a>
+
+    <!-- Canvas for rendering frames (can be hidden) -->
+    <canvas id="frameCanvas" style="display:none;"></canvas>
+
+    <!-- FFmpeg.wasm scripts from a CDN -->
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
